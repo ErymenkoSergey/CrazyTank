@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d38a43b659af354da95211f5b3c8138, type: 3}
+  m_Name: CharactersSetting
+  m_EditorClassIdentifier: 
+  _player:
+    Configuration:
+      Health: 100
+      Armor: 1
+      MoveSpeed: 5
+      Damage: 100
+    Prefab: {fileID: 4878740053320476961, guid: 2eb4a574bbc1846459020f95b31f1385, type: 3}
+  _enemy:
+  - Configuration:
+      Health: 20
+      Armor: 0.05
+      MoveSpeed: 2
+      Damage: 12
+    Prefab: {fileID: 725237857, guid: a111673b76054eb439b3f0ffe2aa6a5f, type: 3}
+  - Configuration:
+      Health: 22
+      Armor: 0.1
+      MoveSpeed: 3
+      Damage: 22
+    Prefab: {fileID: 725237857, guid: 345f1054cab2cdb4383e12899b5ba049, type: 3}
+  - Configuration:
+      Health: 22
+      Armor: 0.2
+      MoveSpeed: 2
+      Damage: 23
+    Prefab: {fileID: 725237857, guid: 34e477c1e6d0bd24189886ff9591b5d7, type: 3}
+  - Configuration:
+      Health: 50
+      Armor: 0.3
+      MoveSpeed: 1
+      Damage: 11
+    Prefab: {fileID: 725237857, guid: e4d47f6fbbd0ebe40b723f0c55031d8a, type: 3}
+  - Configuration:
+      Health: 12
+      Armor: 0.4
+      MoveSpeed: 6
+      Damage: 32
+    Prefab: {fileID: 725237857, guid: 0988f95be1655c245b0f517e84132516, type: 3}
+  - Configuration:
+      Health: 12
+      Armor: 0.5
+      MoveSpeed: 2
+      Damage: 44
+    Prefab: {fileID: 725237857, guid: 6af51170b3edce74f855a851ce6152b0, type: 3}
+  - Configuration:
+      Health: 60
+      Armor: 0.6
+      MoveSpeed: 3
+      Damage: 14
+    Prefab: {fileID: 725237857, guid: b6cfb92cdae23254b87b6ab72c2c7c6e, type: 3}
+  - Configuration:
+      Health: 75
+      Armor: 1
+      MoveSpeed: 1
+      Damage: 70
+    Prefab: {fileID: 725237857, guid: 5b5cc89f58abb3b458cc45a1c35ab52a, type: 3}

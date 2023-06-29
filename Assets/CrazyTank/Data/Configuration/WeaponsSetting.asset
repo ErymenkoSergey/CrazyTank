@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6172f28c98f80804094fedb32af05e3e, type: 3}
+  m_Name: WeaponsSetting
+  m_EditorClassIdentifier: 
+  _weapons:
+  - Id: 0
+    Name: Boom
+    Image: {fileID: 2800000, guid: 62ce01ddca719d34ea9648c586a7cc94, type: 3}
+    Speed: 23
+    Damage: 15
+    GunPrefab: {fileID: 3480869365236200406, guid: 50644f0571043e54d97c978cf4223c63, type: 3}
+    BulletPrefab: {fileID: 2015775526147241663, guid: 6bfa06c0ddabcbc42bcb4800d0d9a1e9, type: 3}
+  - Id: 1
+    Name: Boom Boom
+    Image: {fileID: 2800000, guid: 1f21190ca9d1e8540b2a3a2e46002685, type: 3}
+    Speed: 33
+    Damage: 35
+    GunPrefab: {fileID: 6493843226419685558, guid: 6f3b4d978ee2fc349bef459020e329f0, type: 3}
+    BulletPrefab: {fileID: 1216604534129495961, guid: 87778d4cbc3ad7e4cabec5e795d65ff1, type: 3}
+  - Id: 2
+    Name: Boom Boom X2
+    Image: {fileID: 2800000, guid: 803b0b9bfc1fd824aae8423bfbab83b4, type: 3}
+    Speed: 50
+    Damage: 60
+    GunPrefab: {fileID: 7013739036703780722, guid: 5ea7629ab6a87fd48aa9e6335171fbd1, type: 3}
+    BulletPrefab: {fileID: 3495372187733744100, guid: b4d8fbef87c19884eb48dbce034a438d, type: 3}
+  - Id: 3
+    Name: Boom Boom X3
+    Image: {fileID: 2800000, guid: c7aa62ae78ffca0498c89e5f45f94c0e, type: 3}
+    Speed: 80
+    Damage: 72
+    GunPrefab: {fileID: 5222967607888459336, guid: ee6bc27d01c596c4da340f332bb1329f, type: 3}
+    BulletPrefab: {fileID: 5209163283007199608, guid: 2392e84e443021e428457bd6681d8af0, type: 3}
+  - Id: 4
+    Name: Boom Boom X4
+    Image: {fileID: 2800000, guid: 6a7ac9e8c26b12440bf2b1da2ca97794, type: 3}
+    Speed: 120
+    Damage: 85
+    GunPrefab: {fileID: 5678599729549712527, guid: 83e0f5fc418e15b46a1823e8fd264e67, type: 3}
+    BulletPrefab: {fileID: 3227667946307050077, guid: 01644219713944d46adfce7b3e37af2f, type: 3}
+  - Id: 5
+    Name: Boom Boom X6
+    Image: {fileID: 2800000, guid: 374643871a39dd44880f1c0eff14f46c, type: 3}
+    Speed: 250
+    Damage: 100
+    GunPrefab: {fileID: 147183128892112380, guid: 113c49132987e084e98d68b8a9f2f232, type: 3}
+    BulletPrefab: {fileID: 459687218708741528, guid: 560fbd6b6d7443049b9924933b23bd1f, type: 3}
+  - Id: 6
+    Name: Boom Boom X99
+    Image: {fileID: 2800000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
+    Speed: 330
+    Damage: 200
+    GunPrefab: {fileID: 3280304793722158286, guid: 431dbc38e314e8948a065205df26e56c, type: 3}
+    BulletPrefab: {fileID: 1668842572415545345, guid: 8ce9fe6333e77e543ba4138d258c506c, type: 3}
