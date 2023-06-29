@@ -30,7 +30,7 @@ namespace CrazyTank.Characters
                 iSpawner.OnGetPosition += CheckTarget;
             }
         }
-        private void OnDisable()
+        private void OnDestroy()
         {
             iSpawner.OnGetPosition -= CheckTarget;
         }

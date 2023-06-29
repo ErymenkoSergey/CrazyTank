@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CrazyTank.Characters
 {
-    public class BaseCharacter : MonoBehaviour, IDamageble
+    public abstract class BaseCharacter : MonoBehaviour, IDamageble
     {
         protected bool gameOn { get; set; }
         protected CharacterType characterType { get; set; }

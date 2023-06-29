@@ -52,10 +52,7 @@ namespace CrazyTank.Core
 
         private void OnDestroy() => DeInitialized();
 
-        public void DeInitialized()
-        {
-            _iSpawning.OnGameOver -= GameOver;
-        }
+        public void DeInitialized() => _iSpawning.OnGameOver -= GameOver;
 
         public void SetPalyer(GameObject player)
         {

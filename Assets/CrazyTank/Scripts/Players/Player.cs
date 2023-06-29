@@ -21,7 +21,7 @@ namespace CrazyTank.Characters
 
         [SerializeField] private Rigidbody _rigidbody;
         private Vector3 _currentDirection;
-
+        private float _speedRotate = 30f;
         private float _timeUpdatePosition = 0.5f;
 
         private void Awake()
@@ -68,7 +68,7 @@ namespace CrazyTank.Characters
 
         private void Rotate()
         {
-            float angle = _currentDirection.x * Speed * Speed * Time.deltaTime;
+            float angle = _currentDirection.x * _speedRotate * Time.deltaTime;
             Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
             _rigidbody.MoveRotation(_rigidbody.rotation * rotation);
         }
