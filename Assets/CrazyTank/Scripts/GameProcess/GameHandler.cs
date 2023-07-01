@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace CrazyTank.Core
 {
-    public class GameHandler : MonoBehaviour, IInitializer, IControllable, IPaused
+    public sealed class GameHandler : MonoBehaviour, IInitializer, IControllable, IPaused
     {
         [Header("Data Configuration")]
         [SerializeField] private GameSetting _setting;
@@ -15,6 +15,7 @@ namespace CrazyTank.Core
         [Header("Interface Objects")]
         private GameObject _player;
         private IMoveble _iMoveble;
+        private IShoot _iShoot;
         private IArmed _iArmed;
 
         [SerializeField] private GameObject _uI;
@@ -63,14 +64,20 @@ namespace CrazyTank.Core
                 _iMoveble = iMoveble;
             }
 
-            if (_player.TryGetComponent(out IArmed armed))
+            if (_player.TryGetComponent(out IShoot iShoot))
             {
-                _iArmed = armed;
+                _iShoot = iShoot;
+            }
+
+            if (_player.TryGetComponent(out IArmed iArmed))
+            {
+                _iArmed = iArmed;
                 _iArmed.SetWeaponsConfiguration(_weapons.Weapons, _iDisplaying);
             }
         }
 
         public IMoveble GetMoveble() => _iMoveble;
+        public IShoot GetShoot() => _iShoot;
 
         public void SetPause(bool pause)
         {

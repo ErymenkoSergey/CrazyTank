@@ -42,12 +42,12 @@ namespace CrazyTank.Characters
             }
         }
 
-        protected void SetPositionTarget()
+        private void SetPositionTarget()
         {
             iArmed.SetStatusGame(true);
         }
 
-        protected void CheckPositionTarget()
+        private void CheckPositionTarget()
         {
             iFollowing.ChangeStatus(true);
         }
@@ -60,7 +60,7 @@ namespace CrazyTank.Characters
             {
                 if (characterType == CharacterType.Enemy)
                 {
-                    iSpawner.ReSpawn(Index);
+                    iSpawner.Respawn(Index);
                     Destroy(this.gameObject);
                 }
                 if (characterType == CharacterType.Player)

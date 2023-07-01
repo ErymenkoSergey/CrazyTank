@@ -13,7 +13,8 @@ namespace CrazyTank.Core
         private IControllable _iControllable;
 
         [SerializeField] private Transform[] _spawnPoints;
-        [SerializeField] private Dictionary<int, BaseCharacter> _enemyPool = new Dictionary<int, BaseCharacter>();
+        private Dictionary<int, BaseCharacter> _enemyPool = new Dictionary<int, BaseCharacter>();
+
         private int _keyIndexRespawn;
 
         [SerializeField] private int _spawnEnemyCountToDie = 1;
@@ -21,66 +22,54 @@ namespace CrazyTank.Core
         public event Action OnGameOver;
         public event Action<Vector3> OnGetPosition;
 
+        private bool _isFirstSpawn = true;
+
         public void StartSpawn(int countEnemy, IControllable controllable)
         {
             ClearCharacter();
             _iControllable = controllable;
             PlayerSpawn();
-            EnemySpawn(countEnemy, true);
+            EnemySpawn(countEnemy);
         }
 
         private void ClearCharacter() => _enemyPool.Clear();
 
-        public GameObject PlayerSpawn()
+        public void PlayerSpawn()
         {
-            var player = _data.Player;
-            var players = CreateCharacter(0, player);
-
-            return players.gameObject;
+            Character player = _data.Player;
+            CreateCharacter(0, player);
         }
 
-        public void EnemySpawn(int countEnemy, bool firstSpawn)
+        public void EnemySpawn(int countEnemy)
         {
-            if (firstSpawn)
+            for (int i = 0; i < countEnemy; i++)
             {
-                for (int i = 0; i < countEnemy; i++)
-                {
-                    int random = UnityEngine.Random.Range(0, _data.Enemy.Length);
-                    CreateCharacter(GetSpawnIndex(), _data.Enemy[random], i);
-                    _enemyPool.Add(i, _data.Enemy[random].Prefab);
-                }
+                int random = GetRandomEnemy();
+                CreateCharacter(GetSpawnIndex(), _data.Enemy[random], _isFirstSpawn ? i : _keyIndexRespawn);
+                _enemyPool.Add(_isFirstSpawn ? i : _keyIndexRespawn, _data.Enemy[random].Prefab);
             }
-            else
-            {
-                for (int i = 0; i < countEnemy; i++)
-                {
-                    int random = UnityEngine.Random.Range(0, _data.Enemy.Length);
-                    CreateCharacter(GetSpawnIndex(), _data.Enemy[random], _keyIndexRespawn);
-                    _enemyPool.Add(_keyIndexRespawn, _data.Enemy[random].Prefab);
-                }
-            }
+
+            _isFirstSpawn = false;
         }
 
-        private BaseCharacter CreateCharacter(int indexSpawn, Character character, int id = 0)
+        private void CreateCharacter(int indexSpawn, Character character, int id = 0)
         {
             BaseCharacter player = Instantiate(character.Prefab, _spawnPoints[indexSpawn]);
             player.SetData(character.Configuration, id, this);
-            return player;
         }
 
+        private int GetRandomEnemy() => UnityEngine.Random.Range(0, _data.Enemy.Length);
         private int GetSpawnIndex() => UnityEngine.Random.Range(1, _spawnPoints.Length);
 
-        public void ReSpawn(int key)
+        public void Respawn(int key)
         {
             _enemyPool.Remove(key);
             _keyIndexRespawn = key;
-            EnemySpawn(_spawnEnemyCountToDie, false);
+            EnemySpawn(_spawnEnemyCountToDie);
         }
 
         public void GameOver() => OnGameOver?.Invoke();
-
         public void SetTarget(Vector3 vector) => OnGetPosition?.Invoke(vector);
-
         public void SetPalyer(GameObject player) => _iControllable.SetPalyer(player);
     }
 }

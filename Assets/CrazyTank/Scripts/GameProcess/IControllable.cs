@@ -7,6 +7,7 @@ namespace CrazyTank.Interface
         bool StartGame();
         void SetPalyer(GameObject player);
         IMoveble GetMoveble();
+        IShoot GetShoot();
         void SetPause(bool pause);
         void RestartGame();
         void QuitGame();

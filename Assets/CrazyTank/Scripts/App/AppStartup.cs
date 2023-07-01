@@ -5,7 +5,7 @@ using InputControl = CrazyTank.Input.InputControl;
 
 namespace CrazyTank.Core
 {
-    public class AppStartup : MonoBehaviour
+    public sealed class AppStartup : MonoBehaviour
     {
         [SerializeField] private InputActionAsset _inputActions;
         private InputControl _input;
@@ -39,9 +39,8 @@ namespace CrazyTank.Core
         private void Initialized()
         {
             _isStartGame = _game.StartGame();
-            _input.SetPlayer(_game.GetMoveble());
+            _input.SetPlayer(_game.GetMoveble(), _game.GetShoot());
             _input.SetPaused(_paused);
-
         }
 
         private void OnDestroy()

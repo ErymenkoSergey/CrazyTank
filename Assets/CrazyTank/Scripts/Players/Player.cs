@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace CrazyTank.Characters
 {
-    public sealed class Player : BaseCharacter, IMoveble, IArmed
+    public sealed class Player : BaseCharacter, IMoveble, IArmed, IShoot
     {
         private WeaponHandler _weaponHandler;
 

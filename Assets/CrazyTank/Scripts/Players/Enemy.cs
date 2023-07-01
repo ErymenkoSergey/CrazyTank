@@ -44,7 +44,6 @@ namespace CrazyTank.Characters
         }
 
         public void ChangeStatus(bool isOn) => gameOn = isOn;
-
         private void CheckTarget(Vector3 vector) => _iAI.SetTarget(vector);
     }
 }

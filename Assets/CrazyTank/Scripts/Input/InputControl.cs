@@ -27,6 +27,7 @@ namespace CrazyTank.Input
         }
 
         private IMoveble _iMoveblePlayer;
+        private IShoot _iShootPlayer;
         private IPaused _iPaused;
         private bool _isPause;
 
@@ -128,11 +129,12 @@ namespace CrazyTank.Input
             _inputActions.Disable();
         }
 
-        public void SetPlayer(IMoveble player)
+        public void SetPlayer(IMoveble player, IShoot shoot)
         {
             Initialized();
 
             _iMoveblePlayer = player;
+            _iShootPlayer = shoot;
         }
 
         private void ForwardMove(InputAction.CallbackContext Context)
@@ -185,7 +187,7 @@ namespace CrazyTank.Input
                 return;
 
             if (Context.started)
-                _iMoveblePlayer.Fire(PressedStatus.Down);
+                _iShootPlayer.Fire(PressedStatus.Down);
         }
 
         private void ChangeWeaponUp(InputAction.CallbackContext Context)
@@ -194,7 +196,7 @@ namespace CrazyTank.Input
                 return;
 
             if (Context.started)
-                _iMoveblePlayer.ChangeWeapon(WeaponDirection.Up);
+                _iShootPlayer.ChangeWeapon(WeaponDirection.Up);
         }
 
         private void ChangeWeaponDown(InputAction.CallbackContext Context)
@@ -203,7 +205,7 @@ namespace CrazyTank.Input
                 return;
 
             if (Context.started)
-                _iMoveblePlayer.ChangeWeapon(WeaponDirection.Down);
+                _iShootPlayer.ChangeWeapon(WeaponDirection.Down);
         }
 
         public void SetPaused(IPaused iPause)
