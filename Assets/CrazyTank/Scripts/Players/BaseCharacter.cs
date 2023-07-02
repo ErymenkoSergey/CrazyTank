@@ -11,6 +11,7 @@ namespace CrazyTank.Characters
         protected ISpawning iSpawner { get; private set; }
         protected IFollowing iFollowing { get; set; }
         protected IArmed iArmed { get; set; }
+
         public float Healts { get; private set; }
         public float Armor { get; private set; }
         public float Speed { get; private set; }
@@ -51,6 +52,8 @@ namespace CrazyTank.Characters
         {
             iFollowing.ChangeStatus(true);
         }
+
+        public CharacterType GetCharacterType() => characterType;
 
         public void TakeDamage(float value)
         {

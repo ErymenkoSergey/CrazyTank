@@ -5,8 +5,8 @@ namespace CrazyTank.Weapons
 {
     public sealed class Bullet : MonoBehaviour
     {
-        [SerializeField] private float _speed;
-        [SerializeField] private float _damage;
+        private float _speed;
+        private float _damage;
         private float _timeDestroy = 4f;
 
         private IEnumerator Start()

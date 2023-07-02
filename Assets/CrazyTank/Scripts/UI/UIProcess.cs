@@ -49,12 +49,12 @@ namespace CrazyTank.UI
 
         private void SetPausePanelStatus(bool isOpen)
         {
-            OpenButtonPanel(isOpen);
+            ShowButtonPanel(isOpen);
             _pausePanel.SetActive(isOpen);
             _iControllable.SetPause(isOpen);
         }
 
-        private void OpenButtonPanel(bool isOpen) => _buttonsPanel.SetActive(isOpen);
+        private void ShowButtonPanel(bool isOpen) => _buttonsPanel.SetActive(isOpen);
 
         public void ChangeUIGun(Texture2D image, string name)
         {
@@ -64,7 +64,7 @@ namespace CrazyTank.UI
 
         public void GameOver()
         {
-            OpenButtonPanel(true);
+            ShowButtonPanel(true);
             _continueButton.enabled = false;
             _gameOverPanel.SetActive(true);
         }

@@ -14,7 +14,7 @@ namespace CrazyTank.Core
         private IControllable _game;
         private IPaused _paused;
 
-        [SerializeField] private bool _isStartGame = false;
+        [SerializeField] private bool _isStartGameStatus = false;
 
         private void Start()
         {
@@ -38,7 +38,7 @@ namespace CrazyTank.Core
 
         private void Initialized()
         {
-            _isStartGame = _game.StartGame();
+            _isStartGameStatus = _game.StartGame();
             _input.SetPlayer(_game.GetMoveble(), _game.GetShoot());
             _input.SetPaused(_paused);
         }

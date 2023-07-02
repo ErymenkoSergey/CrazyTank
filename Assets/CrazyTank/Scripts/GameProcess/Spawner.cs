@@ -68,7 +68,7 @@ namespace CrazyTank.Core
             EnemySpawn(_spawnEnemyCountToDie);
         }
 
-        public void GameOver() => OnGameOver?.Invoke();
+        public void GameOver() => OnGameOver.Invoke();
         public void SetTarget(Vector3 vector) => OnGetPosition?.Invoke(vector);
         public void SetPalyer(GameObject player) => _iControllable.SetPalyer(player);
     }

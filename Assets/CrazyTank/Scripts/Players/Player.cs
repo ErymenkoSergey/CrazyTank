@@ -44,6 +44,31 @@ namespace CrazyTank.Characters
             Destroy(gameObject);
         }
 
+        public void SetStatusGame(bool isPlay)
+        {
+            gameOn = isPlay;
+
+            if (isPlay)
+                StartCoroutine(UpdatePosition());
+            else
+                StopAllCoroutines();
+        }
+
+        private IEnumerator UpdatePosition()
+        {
+            while (gameOn)
+            {
+                iSpawner.SetTarget(transform.position);
+                yield return new WaitForSeconds(_timeUpdatePosition);
+            }
+        }
+
+        public void SetWeaponsConfiguration(Weapon[] _weapons, IDisplaying displaying)
+        {
+            _weaponHandler = new WeaponHandler(_weapons, displaying);
+            ChangeWeapon(WeaponDirection.Down);
+        }
+
         public void Move(Vector3 direction, bool isOn)
         {
             if (isOn)
@@ -87,21 +112,6 @@ namespace CrazyTank.Characters
             _bullet = bullet;
         }
 
-        public void Fire(PressedStatus status)
-        {
-            Bullet bullet = Instantiate(_bullet, _firePoint).GetComponent<Bullet>();
-            bullet.SetData(_currentSpeedBullet, _currentDamageBullet);
-        }
-
-        private IEnumerator UpdatePosition()
-        {
-            while (gameOn)
-            {
-                iSpawner.SetTarget(transform.position);
-                yield return new WaitForSeconds(_timeUpdatePosition);
-            }
-        }
-
         private void SetUpGun(GameObject newGun)
         {
             Destroy(_gun);
@@ -109,20 +119,10 @@ namespace CrazyTank.Characters
             _gun.transform.SetParent(_gunPoint, true);
         }
 
-        public void SetStatusGame(bool isPlay)
+        public void Fire(PressedStatus status)
         {
-            gameOn = isPlay;
-
-            if (gameOn)
-                StartCoroutine(UpdatePosition());
-            else
-                StopAllCoroutines();
-        }
-
-        public void SetWeaponsConfiguration(Weapon[] _weapons, IDisplaying displaying)
-        {
-            _weaponHandler = new WeaponHandler(_weapons, displaying);
-            ChangeWeapon(WeaponDirection.Down);
+            Bullet bullet = Instantiate(_bullet, _firePoint).GetComponent<Bullet>();
+            bullet.SetData(_currentSpeedBullet, _currentDamageBullet);
         }
     }
 }

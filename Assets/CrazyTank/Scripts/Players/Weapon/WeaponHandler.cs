@@ -14,9 +14,31 @@ namespace CrazyTank.Weapons
         }
 
         private IDisplaying _ui;
-        public Weapon[] Weapons { get; private set; }
-
+        private Weapon[] Weapons;
         private int _currentWeapon = 0;
+
+        public Weapon GetWeapon(WeaponDirection selected)
+        {
+            switch (selected)
+            {
+                case WeaponDirection.None:
+                    Debug.LogError($"Not found direction ");
+                    break;
+                case WeaponDirection.Up:
+                    _currentWeapon++;
+                    break;
+                case WeaponDirection.Down:
+                    _currentWeapon--;
+                    break;
+                default:
+                    Debug.LogError($"Not found direction ");
+                    break;
+            }
+
+            Weapon gun = GetWeapon(CurrentWeapon(_currentWeapon));
+            SetUI(gun.Image, gun.Name);
+            return gun;
+        }
 
         private Weapon GetWeapon(int index) => Weapons[index];
 
@@ -32,29 +54,6 @@ namespace CrazyTank.Weapons
             }
         }
 
-        public Weapon GetWeapon(WeaponDirection selected)
-        {
-            switch (selected)
-            {
-                case WeaponDirection.None:
-                    Debug.LogError($"Not found direction ");
-                    break;
-                case WeaponDirection.Up:
-                    _currentWeapon++;
-                    break;
-                case WeaponDirection.Down:
-                    _currentWeapon--;
-                    break;
-            }
-
-            Weapon gun = GetWeapon(CurrentWeapon(_currentWeapon));
-            SetUI(gun.Image, gun.Name);
-            return gun;
-        }
-
-        private void SetUI(Texture2D image, string name)
-        {
-            _ui.ChangeUIGun(image, name);
-        }
+        private void SetUI(Texture2D image, string name) => _ui.ChangeUIGun(image, name);
     }
 }

@@ -24,7 +24,7 @@ namespace CrazyTank.Core
         [SerializeField] private GameObject _spawner;
         private ISpawning _iSpawning;
 
-        public event Action<bool> OnPause;
+        public event Action<bool> OnIsPause;
 
         public bool StartGame()
         {
@@ -81,7 +81,7 @@ namespace CrazyTank.Core
 
         public void SetPause(bool pause)
         {
-            OnPause.Invoke(pause);
+            OnIsPause.Invoke(pause);
             Time.timeScale = pause ? 0 : 1;
         }
 

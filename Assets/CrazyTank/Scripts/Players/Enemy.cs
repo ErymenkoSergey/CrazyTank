@@ -39,7 +39,10 @@ namespace CrazyTank.Characters
         {
             if (collision.gameObject.TryGetComponent(out IDamageble damageble))
             {
-                damageble.TakeDamage(Damage);
+                if (damageble.GetCharacterType() != characterType)
+                {
+                    damageble.TakeDamage(Damage);
+                }
             }
         }
 

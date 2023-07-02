@@ -64,7 +64,7 @@ namespace CrazyTank.Input
 
         public void DeInitialized()
         {
-            _iPaused.OnPause += SetStatusPause;
+            _iPaused.OnIsPause -= SetStatusPause;
             UnSubscribe();
         }
 
@@ -211,7 +211,7 @@ namespace CrazyTank.Input
         public void SetPaused(IPaused iPause)
         {
             _iPaused = iPause;
-            _iPaused.OnPause += SetStatusPause;
+            _iPaused.OnIsPause += SetStatusPause;
         }
 
         private void SetStatusPause(bool isPause) => _isPause = isPause;
