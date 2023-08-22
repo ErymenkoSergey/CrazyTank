@@ -16,9 +16,10 @@ namespace CrazyTank.Characters
         public float Armor { get; private set; }
         public float Speed { get; private set; }
         public float Damage { get; private set; }
-        public int Index { get; private set; }
 
-        public void SetData(PlayerConfiguration configuration, int index, ISpawning generated)
+        private int Index;// { get; private set; }
+
+        public void SetData(ref PlayerConfiguration configuration, ref int index, ISpawning generated)
         {
             Healts = configuration.Health;
             Armor = configuration.Armor;
@@ -63,7 +64,7 @@ namespace CrazyTank.Characters
             {
                 if (characterType == CharacterType.Enemy)
                 {
-                    iSpawner.Respawn(Index);
+                    iSpawner.Respawn(ref Index);
                     Destroy(this.gameObject);
                 }
                 if (characterType == CharacterType.Player)

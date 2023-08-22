@@ -9,12 +9,12 @@ namespace CrazyTank.UI
     {
         [SerializeField] private RawImage _gunImage;
         [SerializeField] private TextMeshProUGUI _gunName;
-
+        [Space(15)]
         [SerializeField] private Button _pauseButton;
         [SerializeField] private Button _continueButton;
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _quitButton;
-
+        [Space(15)]
         [SerializeField] private GameObject _buttonsPanel;
         [SerializeField] private GameObject _pausePanel;
         [SerializeField] private GameObject _gameOverPanel;
@@ -47,16 +47,16 @@ namespace CrazyTank.UI
             _quitButton.onClick.RemoveAllListeners();
         }
 
-        private void SetPausePanelStatus(bool isOpen)
+        private void SetPausePanelStatus(in bool isOpen)
         {
             ShowButtonPanel(isOpen);
             _pausePanel.SetActive(isOpen);
             _iControllable.SetPause(isOpen);
         }
 
-        private void ShowButtonPanel(bool isOpen) => _buttonsPanel.SetActive(isOpen);
+        private void ShowButtonPanel(in bool isOpen) => _buttonsPanel.SetActive(isOpen);
 
-        public void ChangeUIGun(Texture2D image, string name)
+        public void ChangeUIGun(ref Texture2D image, ref string name)
         {
             _gunImage.texture = image;
             _gunName.text = name;

@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 1499271076}
   - component: {fileID: 1499271077}
   m_Layer: 0
-  m_Name: AppSturtup
+  m_Name: AppStartup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputActions: {fileID: -944628639613478452, guid: 8f8dbb366ed5d6940835b54a7a9191b0, type: 3}
   _handler: {fileID: 938792496}
-  _isStartGame: 0
+  _isStartGameStatus: 0
 --- !u!1 &1598434334
 GameObject:
   m_ObjectHideFlags: 0

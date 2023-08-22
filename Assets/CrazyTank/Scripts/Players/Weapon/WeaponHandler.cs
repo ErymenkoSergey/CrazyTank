@@ -7,7 +7,7 @@ namespace CrazyTank.Weapons
 {
     public sealed class WeaponHandler
     {
-        public WeaponHandler(Weapon[] weapon, IDisplaying displaying)
+        public WeaponHandler(ref Weapon[] weapon, IDisplaying displaying)
         {
             Weapons = weapon;
             _ui = displaying;
@@ -35,25 +35,26 @@ namespace CrazyTank.Weapons
                     break;
             }
 
-            Weapon gun = GetWeapon(CurrentWeapon(_currentWeapon));
-            SetUI(gun.Image, gun.Name);
+            Weapon gun = GetWeapon(ref CurrentWeapon(ref _currentWeapon));
+            SetUI(ref gun.Image, ref gun.Name);
             return gun;
         }
 
-        private Weapon GetWeapon(int index) => Weapons[index];
+        private Weapon GetWeapon(ref int index) => Weapons[index];
 
-        public int CurrentWeapon(int newIndex)
+        public ref int CurrentWeapon(ref int newIndex)
         {
             if (newIndex >= 0 && newIndex < Weapons.Length)
             {
-                return _currentWeapon;
+                return ref _currentWeapon;
             }
             else
             {
-                return _currentWeapon = 0;
+                _currentWeapon = 0;
+                return ref _currentWeapon;
             }
         }
 
-        private void SetUI(Texture2D image, string name) => _ui.ChangeUIGun(image, name);
+        private void SetUI(ref Texture2D image, ref string name) => _ui.ChangeUIGun(ref image, ref name);
     }
 }

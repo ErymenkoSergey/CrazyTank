@@ -44,7 +44,7 @@ namespace CrazyTank.Characters
             Destroy(gameObject);
         }
 
-        public void SetStatusGame(bool isPlay)
+        public void SetStatusGame(in bool isPlay)
         {
             gameOn = isPlay;
 
@@ -63,9 +63,9 @@ namespace CrazyTank.Characters
             }
         }
 
-        public void SetWeaponsConfiguration(Weapon[] _weapons, IDisplaying displaying)
+        public void SetWeaponsConfiguration(ref Weapon[] _weapons, IDisplaying displaying)
         {
-            _weaponHandler = new WeaponHandler(_weapons, displaying);
+            _weaponHandler = new WeaponHandler(ref _weapons, displaying);
             ChangeWeapon(WeaponDirection.Down);
         }
 

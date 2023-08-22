@@ -4,7 +4,7 @@ namespace CrazyTank.Interface
 {
     public interface IArmed
     {
-        void SetWeaponsConfiguration(Weapon[] _weapons, IDisplaying displaying);
-        void SetStatusGame(bool isPlay);
+        void SetWeaponsConfiguration(ref Weapon[] _weapons, IDisplaying displaying);
+        void SetStatusGame(in bool isPlay);
     }
 }

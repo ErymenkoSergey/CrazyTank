@@ -8,7 +8,7 @@ namespace CrazyTank.Data
     public class WeaponsSetting : ScriptableObject
     {
         [SerializeField] private Weapon[] _weapons;
-        public Weapon[] Weapons => _weapons;
+        public ref Weapon[] Weapons => ref _weapons;
     }
 
     [Serializable]

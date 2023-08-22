@@ -10,7 +10,7 @@ namespace CrazyTank.Interface
         void StartSpawn(int countEnemy, IControllable controllable);
         void SetPalyer(GameObject player);
         void SetTarget(Vector3 vector);
-        void Respawn(int key);
+        void Respawn(ref int key);
         void GameOver();
     }
 }

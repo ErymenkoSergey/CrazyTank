@@ -16,6 +16,8 @@ namespace CrazyTank.Core
 
         [SerializeField] private bool _isStartGameStatus = false;
 
+        private GameOptimizer _optimizer = new GameOptimizer();
+
         private void Start()
         {
             CreateReferences();
@@ -47,6 +49,12 @@ namespace CrazyTank.Core
         {
             _input.DeInitialized();
             _input = null;
+            ClearCash();
+        }
+
+        private void ClearCash()
+        {
+            _optimizer.Optimize();
         }
     }
 }

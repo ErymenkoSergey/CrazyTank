@@ -72,7 +72,7 @@ namespace CrazyTank.Core
             if (_player.TryGetComponent(out IArmed iArmed))
             {
                 _iArmed = iArmed;
-                _iArmed.SetWeaponsConfiguration(_weapons.Weapons, _iDisplaying);
+                _iArmed.SetWeaponsConfiguration(ref _weapons.Weapons, _iDisplaying);
             }
         }
 

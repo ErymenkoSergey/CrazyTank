@@ -37,7 +37,7 @@ namespace CrazyTank.Core
         public void PlayerSpawn()
         {
             Character player = _data.Player;
-            CreateCharacter(0, player);
+            CreateCharacter(0,ref player);
         }
 
         public void EnemySpawn(int countEnemy)
@@ -45,23 +45,23 @@ namespace CrazyTank.Core
             for (int i = 0; i < countEnemy; i++)
             {
                 int random = GetRandomEnemy();
-                CreateCharacter(GetSpawnIndex(), _data.Enemy[random], _isFirstSpawn ? i : _keyIndexRespawn);
+                CreateCharacter(GetSpawnIndex(), ref _data.Enemy[random], _isFirstSpawn ? i : _keyIndexRespawn);
                 _enemyPool.Add(_isFirstSpawn ? i : _keyIndexRespawn, _data.Enemy[random].Prefab);
             }
 
             _isFirstSpawn = false;
         }
 
-        private void CreateCharacter(int indexSpawn, Character character, int id = 0)
+        private void CreateCharacter(int indexSpawn, ref Character character, int id = 0)
         {
             BaseCharacter player = Instantiate(character.Prefab, _spawnPoints[indexSpawn]);
-            player.SetData(character.Configuration, id, this);
+            player.SetData(ref character.Configuration, ref id, this);
         }
 
         private int GetRandomEnemy() => UnityEngine.Random.Range(0, _data.Enemy.Length);
         private int GetSpawnIndex() => UnityEngine.Random.Range(1, _spawnPoints.Length);
 
-        public void Respawn(int key)
+        public void Respawn(ref int key)
         {
             _enemyPool.Remove(key);
             _keyIndexRespawn = key;
